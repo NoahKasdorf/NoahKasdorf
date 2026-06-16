@@ -15,11 +15,19 @@ HEAD  = "\x1b[1;32m"   # bright green
 KEY   = "\x1b[36m"     # pale green (mapped to 'cyan' in scheme)
 VAL   = "\x1b[32m"     # green
 
+INVADER = [
+    "   ▄▄▄▄▄      ▄▄▄▄▄",
+    "  █▀█▀█▀█    █▀█▀█▀█",
+    " ▄█▄█▄█▄█▄  ▄█▄█▄█▄█▄",
+    "    ▀▄█▄▀      ▀▄█▄▀",
+    "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
+]
+
 def kv(label, value):
     return f"{KEY}{label:<11}{RESET}{VAL}{value}{RESET}"
 
 # ---- gather stats ----
-token = os.environ.get("GITHUB_TOKEN")
+token = os.environ.get("GH_STATS_TOKEN")
 member = "n/a"
 try:
     # account age (public endpoint; works with or without token)
@@ -37,6 +45,7 @@ if token:
     s = fetch_github_stats(USER, include_all_commits=True)
     commits   = s.total_commits_all_time
     repos     = s.total_repo_contributions
+    rank      = f"{s.user_rank.level} (top {s.user_rank.percentile:.0f}%)"
     langs     = ", ".join(n for n, _ in s.languages_sorted[:6]) or "n/a"
 else:
     print("No GITHUB_TOKEN -> using placeholder numbers for local preview")
@@ -64,6 +73,10 @@ t.gen_text(
     row_num=8,
 )
 
+start_row = 11
+for i, line in enumerate(INVADER):
+    t.gen_text(text=line, row_num=start_row + i)
+
 # neofetch
 t.gen_typing_text("noah@github:~$ neofetch", row_num=10)
 t.gen_text(text=f"{HEAD}noah@github{RESET}", row_num=11)
@@ -73,6 +86,7 @@ t.gen_text(text=kv("Edu:",       "BCS Honours - AI & Machine Learning"), row_num
 t.gen_text(text=kv("Member:",    member), row_num=15)
 t.gen_text(text=kv("Commits:",   commits), row_num=16)
 t.gen_text(text=kv("Repos:",     repos), row_num=19)
+t.gen_text(text=kv("Rank:",      rank), row_num=20)
 t.gen_text(text=kv("Langs:",     langs), row_num=21)
 # neofetch color swatch
 swatch = "".join(f"\x1b[4{i}m   " for i in range(0, 8)) + RESET
