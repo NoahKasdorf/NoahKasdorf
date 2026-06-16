@@ -41,7 +41,7 @@ if token:
     langs     = ", ".join(n for n, _ in s.languages_sorted[:4]) or "n/a"
 else:
     print("No GITHUB_TOKEN -> using placeholder numbers for local preview")
-    commits, stars, followers, repos = 1284, 37, 21, 18
+    commits, repos = 1284, 37, 21, 18
     rank, langs = "A+ (top 6%)", "Python, TypeScript, Java, C"
 
 # ---- build the terminal ----
@@ -73,8 +73,6 @@ t.gen_text(text=kv("OS:",        "Carleton MCS - Data Science & AI"), row_num=13
 t.gen_text(text=kv("Edu:",       "BCS Honours - AI & Machine Learning"), row_num=14)
 t.gen_text(text=kv("Member:",    member), row_num=15)
 t.gen_text(text=kv("Commits:",   commits), row_num=16)
-t.gen_text(text=kv("Stars:",     stars), row_num=17)
-t.gen_text(text=kv("Followers:", followers), row_num=18)
 t.gen_text(text=kv("Repos:",     repos), row_num=19)
 t.gen_text(text=kv("Rank:",      rank), row_num=20)
 t.gen_text(text=kv("Langs:",     langs), row_num=21)
