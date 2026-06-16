@@ -1,0 +1,22 @@
+[hacker]
+  [hacker.default_colors]
+  fg = "#33ff5e"
+  bg = "#060a06"
+  [hacker.normal_colors]
+  black = "#0c130c"
+  red = "#ff5f56"
+  green = "#33ff5e"
+  yellow = "#27c93f"
+  blue = "#2c8f3a"
+  magenta = "#8dffa6"
+  cyan = "#c9ffc9"
+  white = "#d4ffd4"
+  [hacker.bright_colors]
+  black = "#1f6b2e"
+  red = "#ff7b72"
+  green = "#5bff7e"
+  yellow = "#3fff66"
+  blue = "#33ff5e"
+  magenta = "#a6ffbf"
+  cyan = "#e0ffe6"
+  white = "#ffffff"

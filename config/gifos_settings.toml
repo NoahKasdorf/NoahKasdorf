@@ -1,0 +1,13 @@
+[general]
+debug = false
+cursor = "_"
+show_cursor = true
+blink_cursor = true
+user_name = "noah"
+fps = 15
+color_scheme = "hacker"
+loop_count = 0
+[files]
+frame_base_name = "frame_"
+frame_folder_name = "frames"
+output_gif_name = "neofetch"
