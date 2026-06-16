@@ -20,7 +20,7 @@ def kv(label, value):
     return f"{KEY}{label:<11}{RESET}{VAL}{value}{RESET}"
 
 # ---- gather stats ----
-token = os.environ.get("GH_STATS_TOKEN")
+token = os.environ.get("GITHUB_TOKEN")
 member = "n/a"
 try:
     # account age (public endpoint; works with or without token)
