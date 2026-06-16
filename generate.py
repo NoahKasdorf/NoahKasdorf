@@ -15,13 +15,6 @@ HEAD  = "\x1b[1;32m"   # bright green
 KEY   = "\x1b[36m"     # pale green (mapped to 'cyan' in scheme)
 VAL   = "\x1b[32m"     # green
 
-INVADER = [
-    "   ▄▄▄▄▄      ▄▄▄▄▄",
-    "  █▀█▀█▀█    █▀█▀█▀█",
-    " ▄█▄█▄█▄█▄  ▄█▄█▄█▄█▄",
-    "    ▀▄█▄▀      ▀▄█▄▀",
-    "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
-]
 
 def kv(label, value):
     return f"{KEY}{label:<11}{RESET}{VAL}{value}{RESET}"
@@ -72,10 +65,6 @@ t.gen_text(
     text="Generally curious, always up for learning something new. When not at a keyboard: cycling, bouldering, long trails, and science fiction.",
     row_num=8,
 )
-
-start_row = 11
-for i, line in enumerate(INVADER):
-    t.gen_text(text=line, row_num=start_row + i)
 
 # neofetch
 t.gen_typing_text("noah@github:~$ neofetch", row_num=10)
