@@ -37,8 +37,7 @@ if token:
     s = fetch_github_stats(USER, include_all_commits=True)
     commits   = s.total_commits_all_time
     repos     = s.total_repo_contributions
-    rank      = f"{s.user_rank.level} (top {s.user_rank.percentile:.0f}%)"
-    langs     = ", ".join(n for n, _ in s.languages_sorted[:4]) or "n/a"
+    langs     = ", ".join(n for n, _ in s.languages_sorted[:6]) or "n/a"
 else:
     print("No GITHUB_TOKEN -> using placeholder numbers for local preview")
     commits, repos = 1284, 37, 21, 18
@@ -74,7 +73,6 @@ t.gen_text(text=kv("Edu:",       "BCS Honours - AI & Machine Learning"), row_num
 t.gen_text(text=kv("Member:",    member), row_num=15)
 t.gen_text(text=kv("Commits:",   commits), row_num=16)
 t.gen_text(text=kv("Repos:",     repos), row_num=19)
-t.gen_text(text=kv("Rank:",      rank), row_num=20)
 t.gen_text(text=kv("Langs:",     langs), row_num=21)
 # neofetch color swatch
 swatch = "".join(f"\x1b[4{i}m   " for i in range(0, 8)) + RESET
