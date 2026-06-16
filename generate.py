@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Noah's retro green terminal neofetch GIF for his GitHub profile.
+"""Generate retro green terminal neofetch GIF.
 Uses live GitHub stats when GITHUB_TOKEN is set (as in the Action); falls back
 to placeholder numbers locally so the layout can be previewed without a token.
 """
