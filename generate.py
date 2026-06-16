@@ -36,8 +36,6 @@ except Exception as e:
 if token:
     s = fetch_github_stats(USER, include_all_commits=True)
     commits   = s.total_commits_all_time
-    stars     = s.total_stargazers
-    followers = s.total_followers
     repos     = s.total_repo_contributions
     rank      = f"{s.user_rank.level} (top {s.user_rank.percentile:.0f}%)"
     langs     = ", ".join(n for n, _ in s.languages_sorted[:4]) or "n/a"
@@ -62,7 +60,10 @@ t.gen_text(text="Noah Kasdorf", row_num=6)
 
 # about
 t.gen_typing_text("noah@github:~$ cat about.txt", row_num=7)
-t.gen_text(text="Generally curious - cycling, bouldering, trails, sci-fi.", row_num=8)
+t.gen_text(
+    text="Generally curious, always up for learning something new. When not at a keyboard: cycling, bouldering, long trails, and science fiction.",
+    row_num=8,
+)
 
 # neofetch
 t.gen_typing_text("noah@github:~$ neofetch", row_num=10)
