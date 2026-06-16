@@ -81,7 +81,7 @@ swatch = "".join(f"\x1b[4{i}m   " for i in range(0, 8)) + RESET
 t.gen_text(text=swatch, row_num=23)
 
 # hold the final frame so it lingers before the loop restarts
-for _ in range(180):
+for _ in range(1000):
     t.clone_frame()
 
 t.gen_gif()
