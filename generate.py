@@ -49,7 +49,7 @@ if token:
     langs     = ", ".join(n for n, _ in s.languages_sorted[:6]) or "n/a"
 else:
     print("No GITHUB_TOKEN -> using placeholder numbers for local preview")
-    commits, repos = 1284, 37, 21, 18
+    commits, repos = 1284, 37
     rank, langs = "A+ (top 6%)", "Python, TypeScript, Java, C"
 
 # ---- build the terminal ----
