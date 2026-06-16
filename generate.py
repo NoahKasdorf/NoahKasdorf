@@ -34,16 +34,25 @@ try:
 except Exception as e:
     print("age fetch skipped:", e)
 
+req = urllib.request.Request(
+    "https://api.github.com/user",
+    headers=hdr
+)
+data = json.load(urllib.request.urlopen(req, timeout=15))
+
+public_repos = data.get("public_repos", 0)
+private_repos = data.get("total_private_repos", 0)
+
+repos = public_repos + private_repos
+
 if token:
     s = fetch_github_stats(USER, include_all_commits=True)
     commits   = s.total_commits_all_time
-    repos     = s.total_repo_contributions
-    rank      = f"{s.user_rank.level} (top {s.user_rank.percentile:.0f}%)"
     langs     = ", ".join(n for n, _ in s.languages_sorted[:6]) or "n/a"
 else:
     print("No GITHUB_TOKEN -> using placeholder numbers for local preview")
     commits, repos = 1284, 37
-    rank, langs = "A+ (top 6%)", "Python, TypeScript, Java, C"
+    langs =  "Python, TypeScript, Java, C"
 
 # ---- build the terminal ----
 t = gifos.Terminal(width=760, height=500, xpad=14, ypad=12)
@@ -75,7 +84,6 @@ t.gen_text(text=kv("Edu:",       "BCS Honours - AI & Machine Learning"), row_num
 t.gen_text(text=kv("Member:",    member), row_num=15)
 t.gen_text(text=kv("Commits:",   commits), row_num=16)
 t.gen_text(text=kv("Repos:",     repos), row_num=19)
-t.gen_text(text=kv("Rank:",      rank), row_num=20)
 t.gen_text(text=kv("Langs:",     langs), row_num=21)
 # neofetch color swatch
 swatch = "".join(f"\x1b[4{i}m   " for i in range(0, 8)) + RESET
