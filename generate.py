@@ -106,7 +106,7 @@ for i in range(max(len(logo), len(info))):
     right = info[i] if i < len(info) else ""
     t.gen_text(text=left + right, row_num=12 + i)
 
-for _ in range(30):
+for _ in range(500):
     t.clone_frame()
 
 t.gen_gif()
